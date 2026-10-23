@@ -13,13 +13,14 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v4
 
+      - name: Enable Corepack
+        run: corepack enable
+
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 24
-
-      - name: Enable Corepack
-        run: corepack enable
+          cache: yarn
 
       - name: Check yarn version
         run: yarn --version
@@ -43,3 +44,4 @@ jobs:
           name: code-coverage-report
           path: coverage/
           if-no-files-found: ignore
+
